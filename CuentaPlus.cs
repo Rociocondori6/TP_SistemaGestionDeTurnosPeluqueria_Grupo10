@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sistemas_de_bacos
+namespace sistemas_de_banco
 {
     internal class CuentaPlus : Cuenta
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sistemas_de_bacos
+namespace sistemas_de_banco
 {
     public class CuentaEstandar : Cuenta
     {
