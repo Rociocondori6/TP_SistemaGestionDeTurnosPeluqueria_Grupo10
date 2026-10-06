@@ -57,3 +57,6 @@ Estadística que ordena los servicios de la peluquería según la cantidad de ve
 Reporte de Historial de Clientes y Fidelización:
 
 Muestra el registro detallado de las visitas de un cliente en específico, cuántos turnos lleva acumulados y si califica actualmente para algún descuento o beneficio por fidelidad.
+
+## Diagrama de Clases
+![Diagrama de Clases](./docs/diagrama_de_clases.png)
