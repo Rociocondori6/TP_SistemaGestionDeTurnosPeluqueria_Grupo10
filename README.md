@@ -41,7 +41,7 @@ El sistema registra de forma automática cuántas veces asiste un cliente a la p
 
 Al alcanzar un determinado umbral de visitas (por ejemplo, cada 5 cortes), el sistema aplica de forma automática o permite canjear un descuento especial o un servicio bonificado para premiar su fidelidad.
 
-C. Reportes previstos (Mínimo 4)
+
 Reporte de Turnos Diarios:
 
 Muestra la agenda completa organizada cronológicamente para una fecha específica, indicando hora, cliente, peluquero y servicio asignado.
