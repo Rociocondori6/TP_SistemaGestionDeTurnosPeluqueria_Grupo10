@@ -18,7 +18,7 @@ Turno / Cita: Asociación en un horario determinado entre un cliente, un peluque
 El objetivo principal del sistema es proporcionar una herramienta robusta (dividida en una biblioteca lógica y una interfaz de consola) para mantener la agenda ordenada, evitar solapamientos de horarios y facilitar el control administrativo del negocio y la fidelización de clientes.
 
 A. Funcionalidades con Alta, Baja y Modificación (ABM)
-Gestión de Clientes (ABM Completo):
+Gestión de Clientes :
 
 Alta: Registrar nuevos clientes con nombre, apellido y teléfono.
 
@@ -26,7 +26,7 @@ Modificación: Actualizar los datos de contacto de un cliente existente o gestio
 
 Baja: Dar de baja (o inactivar) a un cliente que ya no utilice los servicios del salón.
 
-Gestión de Turnos / Citas (ABM Completo):
+Gestión de Turnos / Citas :
 
 Alta: Agendar un nuevo turno seleccionando cliente, peluquero, servicio, fecha y hora (validando que no existan cruces de horarios y actualizando automáticamente el contador de visitas del cliente).
 
