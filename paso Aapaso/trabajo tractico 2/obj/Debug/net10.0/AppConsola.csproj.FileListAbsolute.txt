@@ -1,5 +1,0 @@
-C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\trabajo tractico 2\obj\Debug\net10.0\AppConsola.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\trabajo tractico 2\obj\Debug\net10.0\AppConsola.AssemblyInfoInputs.cache
-C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\trabajo tractico 2\obj\Debug\net10.0\AppConsola.AssemblyInfo.cs
-C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\trabajo tractico 2\obj\Debug\net10.0\AppConsola.csproj.CoreCompileInputs.cache
-C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\trabajo tractico 2\obj\Debug\net10.0\AppConsola.sourcelink.json
