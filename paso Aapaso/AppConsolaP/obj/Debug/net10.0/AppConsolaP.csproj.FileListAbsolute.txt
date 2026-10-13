@@ -1,0 +1,16 @@
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.csproj.AssemblyReference.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.AssemblyInfoInputs.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.AssemblyInfo.cs
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.csproj.CoreCompileInputs.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.sourcelink.json
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\bin\Debug\net10.0\AppConsolaP.deps.json
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\bin\Debug\net10.0\AppConsolaP.runtimeconfig.json
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\bin\Debug\net10.0\AppConsolaP.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\bin\Debug\net10.0\AppConsolaP.pdb
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\refint\AppConsolaP.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.pdb
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConsolaP.genruntimeconfig.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\ref\AppConsolaP.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\AppConsolaP\obj\Debug\net10.0\AppConso.55B5C578.Up2Date

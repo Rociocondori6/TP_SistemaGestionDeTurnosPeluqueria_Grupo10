@@ -1,0 +1,13 @@
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\bin\Debug\net10.0\PeluCore.deps.json
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\bin\Debug\net10.0\PeluCore.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\bin\Debug\net10.0\PeluCore.pdb
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.AssemblyInfoInputs.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.AssemblyInfo.cs
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.csproj.CoreCompileInputs.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.sourcelink.json
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\refint\PeluCore.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.pdb
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\ref\PeluCore.dll
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\PeluCore\obj\Debug\net10.0\PeluCore.csproj.Up2Date

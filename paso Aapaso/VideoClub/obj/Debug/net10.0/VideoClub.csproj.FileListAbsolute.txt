@@ -1,0 +1,6 @@
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\VideoClub\obj\Debug\net10.0\VideoClub.csproj.AssemblyReference.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\VideoClub\obj\Debug\net10.0\VideoClub.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\VideoClub\obj\Debug\net10.0\VideoClub.AssemblyInfoInputs.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\VideoClub\obj\Debug\net10.0\VideoClub.AssemblyInfo.cs
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\VideoClub\obj\Debug\net10.0\VideoClub.csproj.CoreCompileInputs.cache
+C:\Users\luzmi\source\repos\ConsoleApp9\paso Aapaso\VideoClub\obj\Debug\net10.0\VideoClub.sourcelink.json
