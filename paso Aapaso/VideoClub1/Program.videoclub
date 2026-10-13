@@ -1,0 +1,380 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using VideoclubExamen.Modelos;
+using VideoClub1.Data;
+using VideoClub1.Modelos; // Ajusta este using según el namespace real de tus clases Pelicula, Socio, Alquiler, etc.
+
+namespace VideoclubExamen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Creamos la base de datos si no existe al arrancar
+            using (var db = new VideoClubContext())
+            {
+                db.Database.EnsureCreated();
+            }
+
+            string opcion = "";
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("=========================================");
+                Console.WriteLine("       SISTEMA DE GESTIÓN - VIDEO CLUB   ");
+                Console.WriteLine("=========================================");
+                Console.WriteLine("1. Registrar Película");
+                Console.WriteLine("2. Registrar Socio");
+                Console.WriteLine("3. Registrar Alquiler");
+                Console.WriteLine("4. Registrar Devolución");
+                Console.WriteLine("5. Reporte: Películas en poder de cada socio");
+                Console.WriteLine("6. Reporte: Socios con demora en devolución");
+                Console.WriteLine("7. Reporte: Películas más alquiladas");
+                Console.WriteLine("8. Reporte: Socio que más películas alquiló");
+                Console.WriteLine("0. Salir");
+                Console.Write("\nSeleccione una opción: ");
+
+                opcion = Console.ReadLine()!;
+
+                switch (opcion)
+                {
+                    case "1": RegistrarPelicula(); break;
+                    case "2": RegistrarSocio(); break;
+                    case "3": RegistrarAlquiler(); break;
+                    case "4": RegistrarDevolucion(); break;
+                    case "5": ReportePeliculasPorSocio(); break;
+                    case "6": ReporteSociosConDemora(); break;
+                    case "7": (); break;
+                    case "8": (); break;
+                    case "0": break;
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        Console.ReadKey();
+                        break;
+                }
+
+            } while (opcion != "0");
+        }
+
+        static void RegistrarPelicula()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REGISTRAR PELÍCULA ---");
+            Console.Write("Título: ");
+            string titulo = Console.ReadLine()!;
+            Console.Write("Autor: ");
+            string autor = Console.ReadLine()!;
+            Console.Write("Cantidad disponible: ");
+            if (int.TryParse(Console.ReadLine(), out int cantidad))
+            {
+                using (var db = new VideoClubContext())
+                {
+                    db.Peliculas.Add(new Pelicula { Titulo = titulo, Autor = autor, CantidadDisponible = cantidad });
+                    db.SaveChanges();
+                }
+                Console.WriteLine("Película registrada con éxito.");
+            }
+            else
+            {
+                Console.WriteLine("Cantidad inválida.");
+            }
+            Console.ReadKey();
+        }
+
+        static void RegistrarSocio()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REGISTRAR SOCIO ---");
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine()!;
+            Console.Write("Apellido: ");
+            string apellido = Console.ReadLine()!;
+            Console.Write("DNI: ");
+            string dni = Console.ReadLine()!;
+            Console.Write("Teléfono: ");
+            string telefono = Console.ReadLine()!;
+
+            using (var db = new VideoClubContext())
+            {
+                db.Socios.Add(new Socio { Nombre = nombre, Apellido = apellido, Dni = dni, Telefono = telefono });
+                db.SaveChanges();
+            }
+            Console.WriteLine("Socio registrado con éxito.");
+            Console.ReadKey();
+        }
+
+        static void RegistrarAlquiler()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REGISTRAR ALQUILER ---");
+            using (var db = new VideoClubContext())
+            {
+                var socios = db.Socios.ToList();
+                if (!socios.Any())
+                {
+                    Console.WriteLine("No hay socios registrados.");
+                    Console.ReadKey();
+                    return;
+                }
+
+                Console.WriteLine("Socios:");
+                foreach (var s in socios)
+                    Console.WriteLine($"ID: {s.Id} | {s.Nombre} {s.Apellido} (DNI: {s.Dni})");
+
+                Console.Write("\nIngrese ID del socio: ");
+                if (!int.TryParse(Console.ReadLine(), out int socioId)) return;
+
+                var peliculasDisponibles = db.Peliculas.Where(p => p.CantidadDisponible > 0).ToList();
+                if (!peliculasDisponibles.Any())
+                {
+                    Console.WriteLine("No hay películas con stock disponible.");
+                    Console.ReadKey();
+                    return;
+                }
+
+                List<Pelicula> seleccionadas = new List<Pelicula>();
+                string seguir = "s";
+                while (seguir.ToLower() == "s")
+                {
+                    Console.WriteLine("\nPelículas disponibles:");
+                    foreach (var p in peliculasDisponibles)
+                        Console.WriteLine($"ID: {p.Id} | {p.Titulo} (Stock: {p.CantidadDisponible})");
+
+                    Console.Write("Ingrese ID de la película a agregar: ");
+                    if (int.TryParse(Console.ReadLine(), out int pelId))
+                    {
+                        var peli = peliculasDisponibles.FirstOrDefault(p => p.Id == pelId);
+                        if (peli != null && !seleccionadas.Contains(peli))
+                        {
+                            seleccionadas.Add(peli);
+                            peli.CantidadDisponible--;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Película no válida o ya seleccionada.");
+                        }
+                    }
+
+                    Console.Write("¿Agregar otra película? (s/n): ");
+                    seguir = Console.ReadLine()!;
+                }
+
+                if (!seleccionadas.Any())
+                {
+                    Console.WriteLine("No se seleccionó ninguna película.");
+                    Console.ReadKey();
+                    return;
+                }
+
+                Console.Write("Monto base del alquiler: ");
+                decimal.TryParse(Console.ReadLine(), out decimal montoBase);
+
+                Console.Write("Cantidad de días de alquiler: ");
+                int.TryParse(Console.ReadLine(), out int dias);
+
+                var alquiler = new Alquiler
+                {
+                    SocioId = socioId,
+                    FechaAlquiler = DateTime.Now,
+                    FechaDevolucionEstimada = DateTime.Now.AddDays(dias),
+                    MontoBase = montoBase,
+                    MontoFinal = montoBase,
+                    Devuelto = false
+                };
+
+                foreach (var p in seleccionadas)
+                {
+                    alquiler.AlquilerPeliculas.Add(new AlquilerPelicula { PeliculaId = p.Id });
+                }
+
+                db.Alquileres.Add(alquiler);
+                db.SaveChanges();
+                Console.WriteLine("Alquiler registrado con éxito.");
+            }
+            Console.ReadKey();
+        }
+
+        static void RegistrarDevolucion()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REGISTRAR DEVOLUCIÓN ---");
+            using (var db = new VideoClubContext())
+            {
+                var pendientes = db.Alquileres
+                    .Include(a => a.Socio)
+                    .Include(a => a.AlquilerPeliculas)
+                    .ThenInclude(ap => ap.Pelicula)
+                    .Where(a => !a.Devuelto)
+                    .ToList();
+
+                if (!pendientes.Any())
+                {
+                    Console.WriteLine("No hay alquileres pendientes.");
+                    Console.ReadKey();
+                    return;
+                }
+
+                foreach (var a in pendientes)
+                {
+                    Console.WriteLine($"ID Alquiler: {a.Id} | Socio: {a.Socio.Nombre} {a.Socio.Apellido} | Límite: {a.FechaDevolucionEstimada.ToShortDateString()}");
+                }
+
+                Console.Write("\nIngrese ID del alquiler a devolver: ");
+                if (int.TryParse(Console.ReadLine(), out int idAlquiler))
+                {
+                    var alquiler = pendientes.FirstOrDefault(a => a.Id == idAlquiler);
+                    if (alquiler != null)
+                    {
+                        alquiler.Devuelto = true;
+                        alquiler.FechaDevolucionReal = DateTime.Now;
+
+                        decimal monto = alquiler.MontoBase;
+                        if (alquiler.FechaDevolucionReal > alquiler.FechaDevolucionEstimada)
+                        {
+                            int diasRetraso = (alquiler.FechaDevolucionReal.Value - alquiler.FechaDevolucionEstimada).Days;
+                            for (int i = 0; i < diasRetraso; i++)
+                            {
+                                monto += monto * 0.10m;
+                            }
+                            Console.WriteLine($"¡Retraso de {diasRetraso} día(s)! Se aplicó recargo del 10% diario.");
+                        }
+
+                        alquiler.MontoFinal = monto;
+
+                        foreach (var ap in alquiler.AlquilerPeliculas)
+                        {
+                            ap.Pelicula.CantidadDisponible++;
+                        }
+
+                        db.SaveChanges();
+                        Console.WriteLine($"Devolución registrada. Monto final a cobrar: ${alquiler.MontoFinal:F2}");
+                    }
+                }
+            }
+            Console.ReadKey();
+        }
+
+        static void ReportePeliculasPorSocio()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REPORTE: PELÍCULAS EN PODER DE CADA SOCIO ---");
+            using (var db = new VideoClubContext())
+            {
+                var activos = db.Alquileres
+                    .Include(a => a.Socio)
+                    .Include(a => a.AlquilerPeliculas)
+                    .ThenInclude(ap => ap.Pelicula)
+                    .Where(a => !a.Devuelto)
+                    .ToList();
+
+                if (!activos.Any())
+                {
+                    Console.WriteLine("No hay alquileres activos.");
+                }
+                else
+                {
+                    foreach (var grupo in activos.GroupBy(a => a.Socio))
+                    {
+                        Console.WriteLine($"\nSocio: {grupo.Key.Nombre} {grupo.Key.Apellido} (DNI: {grupo.Key.Dni})");
+                        foreach (var a in grupo)
+                        {
+                            foreach (var ap in a.AlquilerPeliculas)
+                            {
+                                Console.WriteLine($"   - {ap.Pelicula.Titulo} (Vence: {a.FechaDevolucionEstimada.ToShortDateString()})");
+                            }
+                        }
+                    }
+                }
+            }
+            Console.ReadKey();
+        }
+
+        static void ReporteSociosConDemora()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REPORTE: SOCIOS CON DEMORA ---");
+            using (var db = new VideoClubContext())
+            {
+                var hoy = DateTime.Now;
+                var demorados = db.Alquileres
+                    .Include(a => a.Socio)
+                    .Where(a => !a.Devuelto && a.FechaDevolucionEstimada < hoy)
+                    .Select(a => a.Socio)
+                    .Distinct()
+                    .ToList();
+
+                if (!demorados.Any())
+                {
+                    Console.WriteLine("No hay socios con demora.");
+                }
+                else
+                {
+                    foreach (var s in demorados)
+                    {
+                        Console.WriteLine($"- {s.Nombre} {s.Apellido} (Tel: {s.Telefono}, DNI: {s.Dni})");
+                    }
+                }
+            }
+            Console.ReadKey();
+        }
+
+        static void ReportePeliculasMasAlquiladas()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REPORTE: PELÍCULAS MÁS ALQUILADAS ---");
+            using (var db = new VideoClubContext())
+            {
+                var ranking = db.AlquilerPeliculas
+                    .Include(ap => ap.Pelicula)
+                    .GroupBy(ap => ap.Pelicula.Titulo)
+                    .Select(g => new { Titulo = g.Key, Total = g.Count() })
+                    .OrderByDescending(x => x.Total)
+                    .ToList();
+
+                if (!ranking.Any())
+                {
+                    Console.WriteLine("No hay registros.");
+                }
+                else
+                {
+                    int i = 1;
+                    foreach (var r in ranking)
+                    {
+                        Console.WriteLine($"{i}. {r.Titulo} — {r.Total} alquiler(es)");
+                        i++;
+                    }
+                }
+            }
+            Console.ReadKey();
+        }
+
+        static void ReporteSocioConMasAlquileres()
+        {
+            Console.Clear();
+            Console.WriteLine("--- REPORTE: SOCIO QUE MÁS PELÍCULAS ALQUILÓ ---");
+            using (var db = new VideoClubContext())
+            {
+                var top = db.Alquileres
+                    .Include(a => a.Socio)
+                    .GroupBy(a => new { a.Socio.Nombre, a.Socio.Apellido, a.Socio.Dni })
+                    .Select(g => new { Socio = g.Key, Total = g.Count() })
+                    .OrderByDescending(x => x.Total)
+                    .FirstOrDefault();
+
+                if (top == null)
+                {
+                    Console.WriteLine("No hay registros.");
+                }
+                else
+                {
+                    Console.WriteLine($"Nombre: {top.Socio.Nombre} {top.Socio.Apellido}");
+                    Console.WriteLine($"DNI: {top.Socio.Dni}");
+                    Console.WriteLine($"Total de alquileres realizados: {top.Total}");
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
