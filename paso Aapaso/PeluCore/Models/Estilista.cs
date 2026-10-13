@@ -4,7 +4,13 @@ using System.Text;
 
 namespace PeluCore.Models
 {
-    internal class Estilista
+     public  class Estilista
     {
+        public int Id { get; set; }
+        public string Nombre { get; set;}
+        public string Apellido { get; set; }
+        public string Especialidad { get; set; }
+
+        public ICollection<Turno> Turnos { get; set; }
     }
 }

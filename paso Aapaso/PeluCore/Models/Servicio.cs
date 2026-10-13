@@ -4,7 +4,13 @@ using System.Text;
 
 namespace PeluCore.Models
 {
-    internal class Servicio
+    public  class Servicio
     {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public decimal Precio { get; set; }
+        public int DuracionMinima { get; set; }
+
+        public ICollection<Turno> Turnos { get; set; }>
     }
 }

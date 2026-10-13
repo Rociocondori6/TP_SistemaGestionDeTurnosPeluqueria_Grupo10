@@ -4,7 +4,14 @@ using System.Text;
 
 namespace PeluCore.Models
 {
-    internal class EstadoTurno
+    public class EstadoTurno
     {
+        public enum EstadoTurno
+        {
+            Pendiente,
+            Confirmado,
+            Cancelado,
+            Completado
+        }
     }
 }
