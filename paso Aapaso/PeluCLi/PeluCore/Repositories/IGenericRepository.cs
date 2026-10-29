@@ -1,0 +1,22 @@
+﻿using Microsoft.EntityFrameworkCore;
+using PeluCore.Data;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PeluCore.Repositories
+{
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        private readonly ApplicationDbContext _context;
+
+        public GenericRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public List<T> ObtenerTodos()
+        {
+            return _context.Set<T>().ToList();
+        }
+    }
+}

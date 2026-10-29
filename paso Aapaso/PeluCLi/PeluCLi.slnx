@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="../PeluCore/PeluCore.csproj" />
+  <Project Path="../PeluCre/PeluCre.csproj" Id="b2dba68e-f6cc-4ffb-ab86-f3799515dc84" />
   <Project Path="PeluCLi.csproj" />
 </Solution>
